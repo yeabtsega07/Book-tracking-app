@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from model.book import Book
 from repository.book_repository import BookRepository
 from fastapi.middleware.cors import CORSMiddleware
+from seed.seed import database_seed
 
 app = FastAPI()
 
@@ -15,6 +16,7 @@ app.add_middleware(
 
 
 repo = BookRepository()
+database_seed()
 
 @app.get("/")
 def read_root():
